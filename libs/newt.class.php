@@ -90,23 +90,6 @@ namespace org\octris\newt {
             return self::$instance;
         }
         
-        /****m* newt/autoload
-         * SYNOPSIS
-         */
-        public static function autoload($classpath)
-        /*
-         * FUNCTION
-         *      class autoloader
-         * INPUTS
-         *      * $classpath (string) -- path of class to load
-         ****
-         */
-        {
-            $pkg = preg_replace('|\\\\|', '/', preg_replace('|\\\\|', '.', ltrim($classpath, '\\\\'), 2)) . '.class.php';
-
-            require_once($pkg);
-        }
-
         /****m* newt/bell
          * SYNOPSIS
          */
@@ -210,5 +193,9 @@ namespace org\octris\newt {
         }
     }
 
-    spl_autoload_register(array('\org\octris\newt\newt', 'autoload'));
+    spl_autoload_register(function($classpath) {
+        $pkg = preg_replace('|\\\\|', '/', preg_replace('|\\\\|', '.', ltrim($classpath, '\\\\'), 2)) . '.class.php';
+    
+        require_once($pkg);
+    });
 }
