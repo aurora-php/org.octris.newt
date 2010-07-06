@@ -171,7 +171,7 @@ namespace org\octris\newt {
          ****
          */
         {
-            newt_draw_root_window($x, $y, $text);
+            newt_draw_root_text($x, $y, $text);
         }
 
         /****m* newt/pushHelpLine
