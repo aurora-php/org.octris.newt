@@ -222,8 +222,6 @@ namespace org\octris\newt\component {
                 $exit_struct = array();
                 
                 $this->form->run($exit_struct);
-                
-                print_r($exit_struct);
             }
         }
         
