@@ -58,6 +58,19 @@ namespace org\octris\newt {
          ****
          */
         
+        /****m* newt/__destruct
+         * SYNOPSIS
+         */
+        public function __destruct()
+        /*
+         * FUNCTION
+         *      destructor -- uninitialize newt interface
+         ****
+         */
+        {
+            newt_finished();
+        }
+        
         /****m* newt/getInstance
          * SYNOPSIS
          */
