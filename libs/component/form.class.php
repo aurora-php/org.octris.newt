@@ -41,7 +41,7 @@ namespace org\octris\newt\component {
          ****
          */
         {
-            newt_form_destry($this->resource);
+            newt_form_destroy($this->resource);
         }
         
         /****m* form/run
