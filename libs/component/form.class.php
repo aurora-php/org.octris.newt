@@ -56,5 +56,24 @@ namespace org\octris\newt\component {
         {
             newt_form_run($this->resource, $exit_struct);
         }
+        
+        /****m* form/addComponent
+         * SYNOPSIS
+         */
+        public function addComponent(\org\octris\newt\component $component)
+        /*
+         * FUNCTION
+         *      add component to the form
+         * INPUTS
+         *      * $component (component) -- component to add to the window form
+         * OUTPUTS
+         *      (component) -- returns instance of specified component
+         ****
+         */
+        {
+            newt_form_add_component($this->resource, $component->getResource());
+            
+            return $component;
+        }
     }
 }
