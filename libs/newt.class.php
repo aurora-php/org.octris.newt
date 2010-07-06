@@ -145,9 +145,12 @@ namespace org\octris\newt {
          ****
          */
         {
-            newt_get_screen_size(&$width = null, &$height = null);
+            $width  = null;
+            $height = null;
             
-            $return = new stdClass;
+            newt_get_screen_size(&$width, &$height);
+            
+            $return = new \stdClass;
             $return->width  = $width;
             $return->height = $height;
             
