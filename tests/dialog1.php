@@ -19,5 +19,3 @@ $window->addComponent(new component\button(0, 0, 'QUIT'));
 $window->show();
 
 unset($window);
-
-?>
