@@ -14,6 +14,16 @@ namespace org\octris\newt {
      */
 
     class newt {
+        /****v* newt/$instance
+         * SYNOPSIS
+         */
+        private static $instance = null;
+        /*
+         * FUNCTION
+         *      Instance of newt class to implement singleton
+         ****
+         */
+        
         /****v* newt/$help
          * SYNOPSIS
          */
@@ -24,6 +34,48 @@ namespace org\octris\newt {
          *      stack, when application exits.
          ****
          */
+        
+        /****m* newt/__construct
+         * SYNOPSIS
+         */
+        protected function __construct()
+        /*
+         * FUNCTION
+         *      constructor -- initialize newt interface
+         ****
+         */
+        {
+            newt_init();
+        }
+        
+        /****m* newt/__clone
+         * SYNOPSIS
+         */
+        private function __clone() {}
+        /*
+         * FUNCTION
+         *      cloning of instances of this class is not allowed!
+         ****
+         */
+        
+        /****m* newt/getInstance
+         * SYNOPSIS
+         */
+        final public static function getInstance()
+        /*
+         * FUNCTION
+         *      Create instance of newt class or return the instance, if it already was created.
+         * OUTPUTS
+         *      (newt) -- newt instance
+         ****
+         */
+        {
+            if (is_null(self::$instance)) {
+                self::$instance = new static();
+            }
+            
+            return self::$instance;
+        }
         
         /****m* newt/autoload
          * SYNOPSIS
@@ -45,7 +97,7 @@ namespace org\octris\newt {
         /****m* newt/bell
          * SYNOPSIS
          */
-        public static function bell()
+        public function bell()
         /*
          * FUNCTION
          *      Sends a beep to the terminal.
@@ -58,7 +110,7 @@ namespace org\octris\newt {
         /****m* newt/cls
          * SYNOPSIS
          */
-        public static function cls()
+        public function cls()
         /*
          * FUNCTION
          *      clears the screen
@@ -71,7 +123,7 @@ namespace org\octris\newt {
         /****m* newt/getScreenSize
          * SYNOPSIS
          */
-        public static function getScreenSize()
+        public function getScreenSize()
         /*
          * FUNCTION
          *      Returns screen size
@@ -92,7 +144,7 @@ namespace org\octris\newt {
         /****m* newt/drawRootText
          * SYNOPSIS
          */
-        public static function drawRootText($x, $y, $text)
+        public function drawRootText($x, $y, $text)
         /*
          * FUNCTION
          *      Display text in the root window at the specified position.
@@ -109,7 +161,7 @@ namespace org\octris\newt {
         /****m* newt/pushHelpLine
          * SYNOPSIS
          */
-        public static function pushHelpLine($text)
+        public function pushHelpLine($text)
         /*
          * FUNCTION
          *      Saves the current help line on a stack and displays the new line. If the text is null, 
