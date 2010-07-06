@@ -47,14 +47,14 @@ namespace org\octris\newt\component {
         /****m* form/run
          * SYNOPSIS
          */
-        public function run()
+        public function run(&$exit_struct)
         /*
          * FUNCTION
          *      runs the form
          ****
          */
         {
-            newt_form_run($this->resource);
+            newt_form_run($this->resource, $exit_struct);
         }
     }
 }
