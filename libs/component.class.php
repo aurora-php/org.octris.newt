@@ -69,6 +69,16 @@ namespace org\octris\newt {
          ****
          */
 
+        /****v* component/$parent
+         * SYNOPSIS
+         */
+        protected $parent = null;
+        /*
+         * FUNCTION
+         *      Parent form component
+         ****
+         */
+
         /****m* component/__call
          * SYNOPSIS
          */
@@ -134,6 +144,25 @@ namespace org\octris\newt {
          */
         {
             newt_component_takes_focus($this->resource, $focus);
+        }
+        
+        /****m* component/setParent
+         * SYNOPSIS
+         */
+        public function setParent(\org\octris\newt\component\form $parent)
+        /*
+         * FUNCTION
+         *      Set parent form component
+         * INPUTS
+         *      * $parent (component) -- parent form component
+         ****
+         */
+        {
+            if (is_null($this->parent)) {
+                $this->parent = $parent;
+            } else {
+                throw new \Exception('reparenting is currently not supported!');
+            }
         }
         
         /****m* component/getResource
