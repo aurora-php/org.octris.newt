@@ -50,7 +50,7 @@ namespace org\octris\newt\component {
      ****
      */
 
-    class window {
+    class window extends \org\octris\newt\component\form {
         /****v* window/$x
          * SYNOPSIS
          */
@@ -121,16 +121,6 @@ namespace org\octris\newt\component {
          ****
          */
         
-        /****v* window/$form
-         * SYNOPSIS
-         */
-        protected $form;
-        /*
-         * FUNCTION
-         *      window form handler
-         ****
-         */
-        
         /****v* window/$stack
          * SYNOPSIS
          */
@@ -163,36 +153,7 @@ namespace org\octris\newt\component {
             $this->height = $h;
             $this->title  = $title;
             
-            $this->form = new \org\octris\newt\component\form();
-        }
-        
-        /****m* window/__destruct
-         * SYNOPSIS
-         */
-        public function __destruct()
-        /*
-         * FUNCTION
-         *      destructor
-         ****
-         */
-        {
-            unset($this->form);
-        }
-
-        /****m* window/registerAction
-         * SYNOPSIS
-         */
-        public function registerAction(\org\octris\newt\component $component, $callback)
-        /*
-         * FUNCTION
-         *      Register an action for a specified component
-         * INPUTS
-         *      * $component (component) -- component to register action for
-         *      * $callback (callback) -- callback to call, if action is performed
-         ****
-         */
-        {
-            $this->form->registerAction($component, $callback);
+            parent::__construct();
         }
         
         /****m* window/setHelp
@@ -251,7 +212,7 @@ namespace org\octris\newt\component {
                 // run form
                 $exit_struct = array();
                 
-                $this->form->run($exit_struct);
+                parent::run($exit_struct);
             }
         }
         
@@ -271,21 +232,17 @@ namespace org\octris\newt\component {
             }
         }
         
-        /****m* window/addComponent
+        /****m* window/run
          * SYNOPSIS
          */
-        public function addComponent(\org\octris\newt\component $component)
+        public function run()
         /*
          * FUNCTION
-         *      add component to the form of the window
-         * INPUTS
-         *      * $component (component) -- component to add to the window form
-         * OUTPUTS
-         *      (component) -- returns instance of specified component
+         *      Overwrite run method of parent class and make it an alias for ~self::show~
          ****
          */
         {
-            return $this->form->addComponent($component);
+            $this->show();
         }
     }
 }
