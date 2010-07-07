@@ -48,7 +48,12 @@ $app->drawRootText(-23, 0, '(c) 2010 by Harald Lapp');
 
 $window = new component\window(10, 5);
 
-$window->addComponent(new component\button(0, 0, 'QUIT'));
-$window->show();
+$label = $window->addComponent(new component\label(0, 0, 'label test'));
+$label->setText('test');
 
-$window->hide();
+$button = $window->addComponent(new component\button(0, 3, 'QUIT', true));
+$window->registerAction($button, function($data) use ($window) { 
+    $window->hide();
+});
+
+$window->show();
