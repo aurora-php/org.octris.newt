@@ -46,12 +46,17 @@ $app->drawRootText(0, 0, 'Test');
 $app->pushHelpLine(null);
 $app->drawRootText(-23, 0, '(c) 2010 by Harald Lapp');
 
-$window = new component\window(10, 5);
+$window = new component\window(15, 10, 'Data entry');
 
-$label = $window->addComponent(new component\label(0, 0, 'label test'));
+$label = $window->addComponent(new component\label(0, 1, 'label test'));
 $label->setText('test');
 
-$button = $window->addComponent(new component\button(0, 3, 'QUIT', true));
+$entry = $window->addComponent(new component\entry(0, 3, 10));
+$entry->addEvent('blur', function($data) {
+    print "onBlur";
+});
+
+$button = $window->addComponent(new component\button(0, -1, 'QUIT', true));
 $window->registerAction($button, function($data) use ($window) { 
     $window->hide();
 });
