@@ -59,21 +59,6 @@ namespace org\octris\newt {
          ****
          */
         
-        /****m* component/addCallback
-         * SYNOPSIS
-         */
-        public function addCallback($callback)
-        /*
-         * FUNCTION
-         *      add callback to a component
-         * INPUTS
-         *      * $callback (callback) -- callback to add for component
-         ****
-         */
-        {
-            newt_component_add_callback($this->resource, $callback, array());
-        }
-        
         /****m* component/takesFocus
          * SYNOPSIS
          */
