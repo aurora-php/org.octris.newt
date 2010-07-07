@@ -114,11 +114,15 @@ namespace org\octris\newt\component {
             $prev = (($cnt = count($this->buttons)) > 0
                         ? $this->buttons[$cnt - 1]['resource']
                         : null);
-
+                    
+            $default = ($default && !$this->default
+                        ? $this->default = true
+                        : false);
+            
             $button = newt_radiobutton($x, $y, $text, $default, $prev);
-            
+        
             newt_form_add_component($this->resource, $button);
-            
+        
             array_push($this->buttons, array(
                 'resource' => $button,
                 'value'    => $value
