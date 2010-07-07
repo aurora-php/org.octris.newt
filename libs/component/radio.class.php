@@ -144,6 +144,7 @@ namespace org\octris\newt\component {
             foreach ($this->buttons as $button) {
                 if ($activated == (string)$button['resource']) {
                     $return = $button['value'];
+                    break;
                 }
             }
             
