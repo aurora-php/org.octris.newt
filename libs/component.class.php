@@ -58,6 +58,21 @@ namespace org\octris\newt {
          *      newt resource of widget
          ****
          */
+
+        /****m* component/__toString
+         * SYNOPSIS
+         */
+        public function __toString()
+        /*
+         * FUNCTION
+         *      Returns internal resource ID.
+         * OUTPUTS
+         *      (string) -- internal component ID
+         ****
+         */
+        {
+            return (string)$this->resource;
+        }
         
         /****m* component/takesFocus
          * SYNOPSIS
