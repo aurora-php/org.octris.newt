@@ -59,6 +59,35 @@ namespace org\octris\newt {
          ****
          */
 
+        /****v* component/$events = array()
+         * SYNOPSIS
+         */
+        protected $events = array();
+        /*
+         * FUNCTION
+         *      Registered events
+         ****
+         */
+
+        /****m* component/__call
+         * SYNOPSIS
+         */
+        public function __call($name, $args)
+        /*
+         * FUNCTION
+         *      implements magic method __call for triggering event handlers
+         * INPUTS
+         *      * $name (string) -- name of event handler triggered
+         *      * $args (mixed) -- (optional) arguments
+         ****
+         */
+        {
+            if (substr($name, 0, 2) == 'on' && isset($this->events[$evt = strtolower(substr($name, 2))])) {
+                $cb = $this->events[$evt];
+                $cb($args);
+            }
+        }
+
         /****m* component/__toString
          * SYNOPSIS
          */
@@ -72,6 +101,24 @@ namespace org\octris\newt {
          */
         {
             return (string)$this->resource;
+        }
+        
+        /****m* entry/addEvent
+         * SYNOPSIS
+         */
+        public function addEvent($name, $callback)
+        /*
+         * FUNCTION
+         *      Add event to entry box. The following events are supported:
+         *
+         *      * blur -- is triggered, when entry box looses focus
+         * INPUTS
+         *      * $name (string) -- name of event
+         *      * $callback (callback) -- callback to call when event is triggered
+         ****
+         */
+        {
+            $this->events[strtolower($name)] = $callback;
         }
         
         /****m* component/takesFocus
