@@ -49,13 +49,13 @@ namespace org\octris\newt\component {
      */
 
     class radio extends \org\octris\newt\component {
-        /****v* radio/$parent
+        /****v* radio/$default
          * SYNOPSIS
          */
-        protected $parent = null;
+        protected $default = false;
         /*
          * FUNCTION
-         *      parent form
+         *      whether there is a radio button in this group marked es default
          ****
          */
         
@@ -72,14 +72,13 @@ namespace org\octris\newt\component {
         /****m* radio/__construct
          * SYNOPSIS
          */
-        public function __construct(\org\octris\newt\component\form $parent)
+        public function __construct()
         /*
          * FUNCTION
          *      constructor
          ****
          */
         {
-            $this->parent   = $parent;
             $this->resource = newt_form(null, null, 0);
         }
         
