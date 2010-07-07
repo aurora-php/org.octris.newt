@@ -55,6 +55,11 @@ $entry = $window->addComponent(new component\entry(0, 2, 10));
 $entry->addEvent('blur', function($data) {
 });
 
+$radio = $window->addComponent(new component\radio($window));
+$radio->addButton(0, 4, 'one',   1, true);
+$radio->addButton(0, 5, 'two',   2);
+$radio->addButton(0, 6, 'three', 3);
+
 $button = $window->addComponent(new component\button(0, 9, 'QUIT', true));
 $window->registerAction($button, function($data) use ($window) { 
     $window->hide();
