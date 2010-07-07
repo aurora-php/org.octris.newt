@@ -49,17 +49,6 @@ namespace org\octris\newt\component {
      */
 
     class form extends \org\octris\newt\component {
-        /****v* window/$parent
-         * SYNOPSIS
-         */
-        protected $parent = null;
-        /*
-         * FUNCTION
-         *      stores instance of parent form, if the form has a parent
-         ****
-         */
-        
-        
         /****v* window/$actions
          * SYNOPSIS
          */
@@ -73,20 +62,18 @@ namespace org\octris\newt\component {
         /****m* form/__construct
          * SYNOPSIS
          */
-        public function __construct(\org\octris\newt\component\form $parent = null, \org\octris\newt\component\vscrollbar $vscrollbar = null, $help = '', $flags = 0)
+        public function __construct(\org\octris\newt\component\vscrollbar $vscrollbar = null, $help = '', $flags = 0)
         /*
          * FUNCTION
          *      Creates a newt form component. The first parameter is _required_, when the form is intended to be a subform --
          *      when it's added to an other form using the ~addComponent~ method of the parent form.
          * INPUTS
-         *      * $parent (form) -- (optional) parent form component (default: null).
          *      * $vscrollbar (vscrollbar) -- (optional) instance of a vertical scrollbar (default: null)
          *      * $help (string) -- (optional) helpline text
          *      * $flags (int) -- (optional) flags
          ****
          */
         {
-            $this->parent   = null;
             $this->resource = newt_form((is_null($vscrollbar) ? null : $vscrollbar->getResource()), $help, $flags);
         }
         
