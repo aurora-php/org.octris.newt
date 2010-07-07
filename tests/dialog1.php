@@ -42,21 +42,20 @@ use \org\octris\newt\newt as newt;
 use \org\octris\newt\component as component;
 
 $app = newt::getInstance();
-$app->drawRootText(0, 0, 'Test');
+$app->drawRootText(0, 0, 'Data entry');
 $app->pushHelpLine(null);
 $app->drawRootText(-23, 0, '(c) 2010 by Harald Lapp');
 
 $window = new component\window(15, 10, 'Data entry');
 
-$label = $window->addComponent(new component\label(0, 1, 'label test'));
+$label = $window->addComponent(new component\label(0, 0, 'label test'));
 $label->setText('test');
 
-$entry = $window->addComponent(new component\entry(0, 3, 10));
+$entry = $window->addComponent(new component\entry(0, 2, 10));
 $entry->addEvent('blur', function($data) {
-    print "onBlur";
 });
 
-$button = $window->addComponent(new component\button(0, -1, 'QUIT', true));
+$button = $window->addComponent(new component\button(0, 9, 'QUIT', true));
 $window->registerAction($button, function($data) use ($window) { 
     $window->hide();
 });
