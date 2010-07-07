@@ -141,7 +141,6 @@ namespace org\octris\newt\component {
          ****
          */
         
-        
         /****m* window/__construct
          * SYNOPSIS
          */
@@ -180,6 +179,22 @@ namespace org\octris\newt\component {
             unset($this->form);
         }
 
+        /****m* window/registerAction
+         * SYNOPSIS
+         */
+        public function registerAction(\org\octris\newt\component $component, $callback)
+        /*
+         * FUNCTION
+         *      Register an action for a specified component
+         * INPUTS
+         *      * $component (component) -- component to register action for
+         *      * $callback (callback) -- callback to call, if action is performed
+         ****
+         */
+        {
+            $this->form->registerAction($component, $callback);
+        }
+        
         /****m* window/setHelp
          * SYNOPSIS
          */
