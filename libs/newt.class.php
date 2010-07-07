@@ -152,6 +152,19 @@ namespace org\octris\newt {
             newt_cls();
         }
         
+        /****m* newt/refresh
+         * SYNOPSIS
+         */
+        public function refresh()
+        /*
+         * FUNCTION
+         *      Refresh the screen
+         ****
+         */
+        {
+            newt_refresh();
+        }
+        
         /****m* newt/getScreenSize
          * SYNOPSIS
          */
