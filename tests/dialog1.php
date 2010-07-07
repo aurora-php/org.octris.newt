@@ -46,7 +46,7 @@ $app->drawRootText(0, 0, 'Data entry');
 $app->pushHelpLine(null);
 $app->drawRootText(-23, 0, '(c) 2010 by Harald Lapp');
 
-$window = new component\window(15, 10, 'Data entry');
+$window = new component\window(30, 11, 'Data entry');
 
 $label = $window->addComponent(new component\label(0, 0, 'label test'));
 $label->setText('test');
@@ -55,12 +55,14 @@ $entry = $window->addComponent(new component\entry(0, 2, 10));
 $entry->addEvent('blur', function($data) {
 });
 
-$radio = $window->addComponent(new component\radio($window));
+$radio = $window->addComponent(new component\radio());
 $radio->addButton(0, 4, 'one',   1, true);
 $radio->addButton(0, 5, 'two',   2);
 $radio->addButton(0, 6, 'three', 3);
 
-$button = $window->addComponent(new component\button(0, 9, 'QUIT', true));
+$chk1 = $window->addComponent(new component\checkbox(0, 8, 'checkbox 1', '*'));
+
+$button = $window->addComponent(new component\button(0, 10, 'QUIT', true));
 $window->registerAction($button, function($data) use ($window) { 
     $window->hide();
 });
