@@ -161,6 +161,7 @@ namespace org\octris\newt\component {
                 throw new \Exception("it's not allowed to add a window as component!");
             }
             
+            $component->setParent($this);
             newt_form_add_component($this->resource, $component->getResource());
             
             return $component;
