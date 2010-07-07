@@ -49,6 +49,16 @@ namespace org\octris\newt\component {
      */
 
     class form extends \org\octris\newt\component {
+        /****v* window/$actions
+         * SYNOPSIS
+         */
+        protected $actions = array();
+        /*
+         * FUNCTION
+         *      Actions registered for the form
+         ****
+         */
+        
         /****m* form/__construct
          * SYNOPSIS
          */
@@ -79,6 +89,44 @@ namespace org\octris\newt\component {
             newt_form_destroy($this->resource);
         }
         
+        /****m* form/registerAction
+         * SYNOPSIS
+         */
+        public function registerAction(\org\octris\newt\component $component, $callback)
+        /*
+         * FUNCTION
+         *      Register an action for a specified component
+         * INPUTS
+         *      * $component (component) -- component to register action for
+         *      * $callback (callback) -- callback to call, if action is performed
+         ****
+         */
+        {
+            $this->actions[(string)$component] = $callback;
+        }
+        
+        /****m* form/dispatchAction
+         * SYNOPSIS
+         */
+        protected function dispatchAction($exit_struct)
+        /*
+         * FUNCTION
+         *      Action dispatcher
+         * INPUTS
+         *      * $exit_struct (array) -- requires to be an exit structure as it's provided when a formular was run
+         ****
+         */
+        {
+            if (is_array($exit_struct) && isset($exit_struct['component'])) {
+                $res = (string)$exit_struct['component'];
+                
+                if (isset($this->actions[$res])) {
+                    $cb = $this->actions[$res];
+                    $cb($exit_struct);
+                }
+            }
+        }
+        
         /****m* form/run
          * SYNOPSIS
          */
@@ -90,6 +138,8 @@ namespace org\octris\newt\component {
          */
         {
             newt_form_run($this->resource, $exit_struct);
+            
+            $this->dispatchAction($exit_struct);
         }
         
         /****m* form/addComponent
