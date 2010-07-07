@@ -180,26 +180,6 @@ namespace org\octris\newt\component {
             unset($this->form);
         }
 
-        /****m* window/__callStatic
-         * SYNOPSIS
-         */
-        public static function __callStatic($name, $args)
-        /*
-         * FUNCTION
-         *      This method is a helper for statically calling the hide method.
-         * INPUTS
-         *      * $name (string) -- name of method to call statically
-         *      * $args (mixed) -- (optional) arguments
-         ****
-         */
-        {
-            if ($name != 'hide') {
-                throw new \Excaption('Call to undefined method ' . __CLASS__ . '::' . $name . '()!');
-            } else {
-                self::hide();
-            }
-        }
-
         /****m* window/setHelp
          * SYNOPSIS
          */
