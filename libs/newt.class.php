@@ -103,6 +103,7 @@ namespace org\octris\newt {
          ****
          */
         {
+            newt_cls();
             newt_finished();
         }
         
