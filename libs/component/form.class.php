@@ -170,6 +170,10 @@ namespace org\octris\newt\component {
          ****
          */
         {
+            if ($component instanceof \org\octris\newt\component\window) {
+                throw new \Exception("it's not allowed to add a window as component!");
+            }
+            
             newt_form_add_component($this->resource, $component->getResource());
             
             return $component;
