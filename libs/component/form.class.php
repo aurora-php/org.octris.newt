@@ -96,11 +96,11 @@ namespace org\octris\newt\component {
         public function __destruct()
         /*
          * FUNCTION
-         *      Destructor frees the memory used by the form and all it's assigned components.
+         *      destructor
          ****
          */
         {
-            newt_form_destroy($this->resource);
+            if (is_null($this->parent)) newt_form_destroy($this->resource);
         }
         
         /****m* form/registerAction
