@@ -57,9 +57,9 @@ namespace org\octris\newt\component {
          * FUNCTION
          *      constructor
          * INPUTS
-         *      * 
-         * OUTPUTS
-         *      
+         *      * $vscrollbar (vscrollbar) -- (optional) instance of a vertical scrollbar (default: null)
+         *      * $help (string) -- (optional) helpline text
+         *      * $flags (int) -- (optional) flags
          ****
          */
         {
