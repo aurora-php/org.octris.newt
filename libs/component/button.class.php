@@ -52,7 +52,7 @@ namespace org\octris\newt\component {
         /****m* button/__construct
          * SYNOPSIS
          */
-        public function __construct($x, $y, $text)
+        public function __construct($x, $y, $text, $compact = false)
         /*
          * FUNCTION
          *      constructor
@@ -60,10 +60,11 @@ namespace org\octris\newt\component {
          *      * $x (int) -- column to display button at
          *      * $y (int) -- row to display button in
          *      * $text (string) -- text to display in button
+         *      * $compact (bool) -- (optional) whether to display a compact button (default: false)
          ****
          */
         {
-            $this->resource = newt_button($x, $y, $text);
+            $this->resource = ($compact ? newt_compact_button($x, $y, $text) : newt_button($x, $y, $text));
         }
     }
 }
