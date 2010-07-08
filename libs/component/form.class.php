@@ -116,7 +116,6 @@ namespace org\octris\newt\component {
             $this->actions[(string)$component] = $callback;
         }
         
-        /****m* form/dispatchAction
         /****m* form/registerHotkey
          * SYNOPSIS
          */
@@ -138,11 +137,9 @@ namespace org\octris\newt\component {
         /****m* form/registerFd
          * SYNOPSIS
          */
-        protected function dispatchAction($exit_struct)
         public function registerFd($fd, $flags = 0)
         /*
          * FUNCTION
-         *      Action dispatcher
          *      Register a file descriptor to observe.
          * INPUTS
          *      * $fd (int) -- file descriptor to observe
