@@ -135,12 +135,24 @@ namespace org\octris\newt\component {
             newt_form_add_hot_key($this->resource, $hotkey);
         }
         
+        /****m* form/registerFd
          * SYNOPSIS
          */
         protected function dispatchAction($exit_struct)
+        public function registerFd($fd, $flags = 0)
         /*
          * FUNCTION
          *      Action dispatcher
+         *      Register a file descriptor to observe.
+         * INPUTS
+         *      * $fd (int) -- file descriptor to observe
+         *      * $flags (int) -- (optional) flags
+         ****
+         */
+        {
+            newt_form_watch_fd($this->resource, $fd, $flags);
+        }
+        
          * INPUTS
          *      * $exit_struct (array) -- requires to be an exit structure as it's provided when a formular was run
          ****
