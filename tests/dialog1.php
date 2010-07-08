@@ -42,32 +42,42 @@ use \org\octris\newt\newt as newt;
 use \org\octris\newt\component as component;
 
 $app = newt::getInstance();
-$app->drawRootText(0, 0, 'Data entry');
-$app->pushHelpLine(null);
+$app->drawRootText(0, 0, 'Network Configuration');
 $app->drawRootText(-23, 0, '(c) 2010 by Harald Lapp');
 
-$window = new component\window(30, 11, 'Data entry');
+$window = new component\window(37, 13, 'Enter the network configuration:');
 
-$label = $window->addComponent(new component\label(0, 0, 'label test'));
-$label->setText('test');
+$window->addComponent(new component\label(2, 1, 'Hostname'));
+$entry1 = $window->addComponent(new component\entry(15, 1, 20));
 
-$entry = $window->addComponent(new component\entry(0, 2, 10));
-$entry->addEvent('blur', function($data) {
+$window->addComponent(new component\label(2, 2, 'Domain Name'));
+$entry2 = $window->addComponent(new component\entry(15, 2, 20));
+
+$window->addComponent(new component\label(2, 4, 'Netmask'));
+$entry3 = $window->addComponent(new component\entry(15, 4, 20));
+
+$window->addComponent(new component\label(2, 5, 'Gateway'));
+$entry4 = $window->addComponent(new component\entry(15, 5, 15));
+
+$window->addComponent(new component\label(2, 6, 'Primary DNS'));
+$entry5 = $window->addComponent(new component\entry(15, 6, 15));
+
+$chk = $window->addComponent(new component\checkbox(2, 8, 'Use HTTP Proxy', ' '));
+
+$window->addComponent(new component\label(2, 9, 'Proxy URL'));
+$entry6 = $window->addComponent(new component\entry(15, 9, 20));
+
+$btn1 = $window->addComponent(new component\button(2, 11, 'Done', true));
+$window->registerAction($btn1, function($data) use ($window) { 
+    // exit dialog -- therefore return ~false~
+    return false;
 });
 
-$radio = $window->addComponent(new component\radio());
-$radio->addButton(0, 4, 'one',   1, true);
-$radio->addButton(0, 5, 'two',   2);
-$radio->addButton(0, 6, 'three', 3);
-
-$chk1 = $window->addComponent(new component\checkbox(0, 8, 'checkbox 1', '*'));
-
-$button = $window->addComponent(new component\button(0, 10, 'QUIT', true));
-$window->registerAction($button, function($data) use ($window) { 
+$btn2 = $window->addComponent(new component\button(10, 11, 'Cancel', true));
+$window->registerAction($btn2, function($data) use ($window) { 
     // exit dialog -- therefore return ~false~
     return false;
 });
 
 $window->show();
 $window->hide();
-
