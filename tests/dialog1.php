@@ -64,7 +64,10 @@ $chk1 = $window->addComponent(new component\checkbox(0, 8, 'checkbox 1', '*'));
 
 $button = $window->addComponent(new component\button(0, 10, 'QUIT', true));
 $window->registerAction($button, function($data) use ($window) { 
-    $window->hide();
+    // exit dialog -- therefore return ~false~
+    return false;
 });
 
 $window->show();
+$window->hide();
+
