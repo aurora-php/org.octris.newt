@@ -158,10 +158,14 @@ namespace org\octris\newt {
          ****
          */
         {
-            if (is_null($this->parent)) {
-                $this->parent = $parent;
-            } else {
+            if ($this instanceof \org\octris\newt\component\window) {
+                throw new \Exception('cannot set parent for a window!');
+            } elseif ($this === $parent) {
+                throw new \Exception('component and parent must not be the same!');
+            } elseif (!is_null($this->parent)) {
                 throw new \Exception('reparenting is currently not supported!');
+            } else {
+                $this->parent = $parent;
             }
         }
         
