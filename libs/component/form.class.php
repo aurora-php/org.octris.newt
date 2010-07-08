@@ -107,6 +107,24 @@ namespace org\octris\newt\component {
         }
         
         /****m* form/dispatchAction
+        /****m* form/registerHotkey
+         * SYNOPSIS
+         */
+        public function registerHotkey($hotkey, $callback)
+        /*
+         * FUNCTION
+         *      Register hotkey to the form and a callback which will be called, when hotkey is pressed.
+         * INPUTS
+         *      * $hotkey (int) -- hotkey to register
+         *      * $callback (callback) -- callback to execute for hotkey
+         ****
+         */
+        {
+            $this->hotkeys[$hotkey] = $callback;
+            
+            newt_form_add_hot_key($this->resource, $hotkey);
+        }
+        
          * SYNOPSIS
          */
         protected function dispatchAction($exit_struct)
