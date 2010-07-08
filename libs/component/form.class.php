@@ -59,6 +59,16 @@ namespace org\octris\newt\component {
          ****
          */
         
+        /****v* window/$hotkeys
+         * SYNOPSIS
+         */
+        protected $hotkeys = array();
+        /*
+         * FUNCTION
+         *      Hotkeys registered for the form
+         ****
+         */
+        
         /****m* form/__construct
          * SYNOPSIS
          */
