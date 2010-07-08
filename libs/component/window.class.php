@@ -210,9 +210,7 @@ namespace org\octris\newt\component {
                 });
             
                 // run form
-                $exit_struct = array();
-                
-                parent::run($exit_struct);
+                parent::run();
             }
         }
         
