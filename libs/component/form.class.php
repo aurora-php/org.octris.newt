@@ -150,19 +150,55 @@ namespace org\octris\newt\component {
             newt_form_watch_fd($this->resource, $fd, $flags);
         }
         
+        /****m* form/dispatcher
+         * SYNOPSIS
+         */
+        protected function dispatcher($exit_struct)
+        /*
+         * FUNCTION
+         *      Action dispatcher.
          * INPUTS
          *      * $exit_struct (array) -- requires to be an exit structure as it's provided when a formular was run
+         * OUTPUTS
+         *      (bool) -- exit status of the callback
          ****
          */
         {
-            if (is_array($exit_struct) && isset($exit_struct['component'])) {
-                $res = (string)$exit_struct['component'];
+            $return = null;
+            
+            if (is_array($exit_struct)) {
+                $reason = (isset($exit_struct['reason'])
+                            ? $exit_struct['reason']
+                            : -1);
                 
-                if (isset($this->actions[$res])) {
-                    $cb = $this->actions[$res];
-                    $cb($exit_struct);
+                switch ($reason) {
+                case NEWT_EXIT_HOTKEY:
+                    $key = $exit_struct['key'];
+                
+                    if (isset($this->hotkeys[$key])) {
+                        $cb = $this->hotkeys[$key];
+                        
+                        $return = $cb($exit_struct);
+                    }
+                    break;
+                case NEWT_EXIT_COMPONENT:
+                    $res = (string)$exit_struct['component'];
+            
+                    if (isset($this->actions[$res])) {
+                        $cb = $this->actions[$res];
+                        
+                        $return = $cb($exit_struct);
+                    }
+                    break;
+                case NEWT_EXIT_FDREADY:
+                    print_r($exit_struct);
+                    break;
+                default:
+                    // unknown reason!
                 }
             }
+            
+            return $return;
         }
         
         /****m* form/run
