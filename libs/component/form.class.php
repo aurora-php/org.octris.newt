@@ -131,16 +131,22 @@ namespace org\octris\newt\component {
         /****m* form/run
          * SYNOPSIS
          */
-        public function run(&$exit_struct)
+        public function run()
         /*
          * FUNCTION
-         *      runs the form
+         *      Execute the form. The form is executed as long as no action callback does not return ~false~.
+         * OUTPUTS
+         *      (array) -- exit status of the form
          ****
          */
         {
-            newt_form_run($this->resource, $exit_struct);
-            
-            $this->dispatchAction($exit_struct);
+            do {
+                $exit_struct = array();
+
+                newt_form_run($this->resource, $exit_struct);
+
+                $continue = $this->dispatcher($exit_struct);
+            } while ($continue !== false);
         }
         
         /****m* form/addComponent
